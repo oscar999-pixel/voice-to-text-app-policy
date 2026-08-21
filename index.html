@@ -5,124 +5,220 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Voice to Text — Privacy Policy</title>
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 32px 20px 80px;
-    line-height: 1.7;
-    color: #1c1c1e;
-    background: #fff;
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --text: #16181d;
+    --text-2: #565b66;
+    --text-3: #8a8f99;
+    --accent: #1565c0;
+    --accent-soft: #e3f2fd;
+    --border: #e4e6ea;
   }
-  h1 { font-size: 26px; margin-bottom: 4px; }
-  h2 { font-size: 19px; margin-top: 36px; }
-  .updated { color: #666; font-size: 14px; margin-bottom: 32px; }
-  .lang-block + .lang-block { margin-top: 56px; padding-top: 40px; border-top: 1px solid #ddd; }
-  a { color: #1565c0; }
-  ul { padding-left: 20px; }
-  footer { margin-top: 56px; font-size: 13px; color: #888; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215;
+      --surface: #17191d;
+      --text: #eef0f3;
+      --text-2: #a7acb6;
+      --text-3: #767c87;
+      --accent: #5b9bf2;
+      --accent-soft: #1c2c40;
+      --border: #2a2d33;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .updated {
+    color: var(--text-3);
+    font-size: 14px;
+    margin: 0 0 8px;
+  }
+  .lede {
+    color: var(--text-2);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 20px 0 0;
+  }
+
+  .tabs { margin-top: 36px; }
+  .tabbar {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .tabbar label {
+    padding: 10px 4px;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-3);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  input[name="lang"] { position: absolute; opacity: 0; pointer-events: none; }
+  .panel { display: none; }
+  #en:checked ~ .tabbar label[for="en"],
+  #zh:checked ~ .tabbar label[for="zh"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  #en:checked ~ .panels #en-panel,
+  #zh:checked ~ .panels #zh-panel {
+    display: block;
+  }
+
+  section { margin-top: 32px; }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  p, li {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--text-2);
+  }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li + li { margin-top: 6px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover, a:focus-visible { border-bottom-color: var(--accent); }
+  strong { color: var(--text); font-weight: 600; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-3);
+  }
 </style>
 </head>
 <body>
 
-<div class="lang-block">
-<h1>Voice to Text — Privacy Policy</h1>
-<p class="updated">Last updated: August 2026</p>
+<div class="page">
+  <p class="eyebrow">Voice to Text</p>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: August 2026</p>
 
-<p>Voice to Text ("the app") is a simple speech-to-text note-taking app. This
-page explains what happens to your data when you use it.</p>
+  <div class="tabs">
+    <input type="radio" name="lang" id="en" checked>
+    <input type="radio" name="lang" id="zh">
+    <div class="tabbar">
+      <label for="en">English</label>
+      <label for="zh">繁體中文</label>
+    </div>
 
-<h2>What the app stores</h2>
-<p>Your voice recordings and the text transcribed from them are stored
-<strong>only on your device</strong>, using standard local app storage. The
-app has no backend server and no user accounts — nothing you record or type
-is ever uploaded to any server operated by the developer. Deleting a note in
-the app, or uninstalling the app, permanently removes that data from your
-device.</p>
+    <div class="panels">
+      <div class="panel" id="en-panel">
+        <p class="lede">Voice to Text is a speech-to-text note-taking app. This page explains what happens to your data when you use it.</p>
 
-<h2>Speech recognition</h2>
-<p>Transcription is performed using Apple's built-in Speech Recognition
-framework. Depending on your device and iOS settings, this processing may
-happen entirely on-device or may involve sending audio to Apple's servers.
-This is governed by Apple's own privacy practices, not the developer's — see
-<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>
-for details.</p>
+        <section>
+          <h2>What the app stores</h2>
+          <p>Your voice recordings and the text transcribed from them are stored <strong>only on your device</strong>, using standard local app storage. The app has no backend server and no user accounts — nothing you record or type is ever uploaded to any server operated by the developer. Deleting a note in the app, or uninstalling the app, permanently removes that data from your device.</p>
+        </section>
 
-<h2>Advertising</h2>
-<p>The app shows ads served by Google AdMob. These are configured as
-<strong>non-personalized</strong> ads only — the app does not use Apple's
-App Tracking Transparency framework, does not access your device's
-advertising identifier (IDFA), and does not build a profile of you for ad
-targeting. Google AdMob may still process limited technical information
-(such as approximate location derived from IP address, device type, and
-general app usage signals) as necessary to serve contextual ads and prevent
-fraud. See
-<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's Ads Privacy &amp; Terms</a>
-for details on how Google handles this data.</p>
+        <section>
+          <h2>Speech recognition</h2>
+          <p>Transcription is performed using Apple's built-in Speech Recognition framework. Depending on your device and iOS settings, this processing may happen entirely on-device or may involve sending audio to Apple's servers. This is governed by Apple's own privacy practices, not the developer's — see <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> for details.</p>
+        </section>
 
-<h2>What the developer does not do</h2>
-<ul>
-  <li>No account creation or login</li>
-  <li>No analytics or crash-reporting SDKs beyond what's described above</li>
-  <li>No selling or sharing of your data with third parties, other than the
-    minimum required for Google AdMob to serve non-personalized ads as
-    described above</li>
-  <li>No use of your recordings or transcripts for any purpose other than
-    showing them back to you in the app</li>
-</ul>
+        <section>
+          <h2>Advertising</h2>
+          <p>The app shows ads served by Google AdMob, configured as <strong>non-personalized</strong> ads only — the app does not use Apple's App Tracking Transparency framework, does not access your device's advertising identifier (IDFA), and does not build a profile of you for ad targeting. Google AdMob may still process limited technical information (such as approximate location derived from IP address, device type, and general app usage signals) as necessary to serve contextual ads and prevent fraud. See <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's Ads Privacy &amp; Terms</a> for details.</p>
+        </section>
 
-<h2>Children's privacy</h2>
-<p>The app is not directed at children under 13 and does not knowingly
-collect information from them.</p>
+        <section>
+          <h2>What the developer does not do</h2>
+          <ul>
+            <li>No account creation or login</li>
+            <li>No analytics or crash-reporting SDKs beyond what's described above</li>
+            <li>No selling or sharing of your data with third parties, other than the minimum required for Google AdMob to serve non-personalized ads</li>
+            <li>No use of your recordings or transcripts for any purpose other than showing them back to you in the app</li>
+          </ul>
+        </section>
 
-<h2>Contact</h2>
-<p>Questions about this policy: <a href="mailto:oscar.tsai999@gmail.com">oscar.tsai999@gmail.com</a></p>
+        <section>
+          <h2>Children's privacy</h2>
+          <p>The app is not directed at children under 13 and does not knowingly collect information from them.</p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>Questions about this policy: <a href="mailto:oscar.tsai999@gmail.com">oscar.tsai999@gmail.com</a></p>
+        </section>
+      </div>
+
+      <div class="panel" id="zh-panel">
+        <p class="lede">Voice to Text 是一個語音轉文字的筆記工具。這個頁面說明使用時，你的資料會如何被處理。</p>
+
+        <section>
+          <h2>本 App 儲存了什麼</h2>
+          <p>你的錄音以及轉錄出來的文字，<strong>只會儲存在你的裝置上</strong>，使用標準的 App 本機儲存空間。本 App 沒有後端伺服器、也沒有使用者帳號——你錄的或打的任何內容都不會上傳到開發者營運的任何伺服器。在 App 裡刪除筆記，或是把 App 移除安裝，都會永久清除裝置上對應的資料。</p>
+        </section>
+
+        <section>
+          <h2>語音辨識</h2>
+          <p>轉錄功能是透過 Apple 內建的 Speech Recognition framework 處理。依照你的裝置跟 iOS 設定不同，這個處理過程可能完全在裝置端進行，也可能會把音訊傳送到 Apple 的伺服器。這部分是 Apple 自己的隱私權處理方式，詳情請參考 <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隱私權政策</a>。</p>
+        </section>
+
+        <section>
+          <h2>廣告</h2>
+          <p>本 App 會顯示由 Google AdMob 提供的廣告，設定為<strong>非個人化</strong>廣告——不會使用 App Tracking Transparency 機制、不會存取廣告識別碼（IDFA），也不會建立你的個人化輪廓。Google AdMob 為了投放情境廣告與防止詐欺，仍可能處理少量技術性資訊，詳情請參考 <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 廣告隱私權與條款</a>。</p>
+        </section>
+
+        <section>
+          <h2>開發者不會做的事</h2>
+          <ul>
+            <li>不需要註冊帳號或登入</li>
+            <li>除了上面提到的廣告相關項目之外，不使用任何分析或錯誤回報 SDK</li>
+            <li>不會出售或分享你的資料給第三方，僅有 Google AdMob 投放非個人化廣告所需的最低限度資訊除外</li>
+            <li>不會把你的錄音或逐字稿用於在 App 裡顯示給你之外的任何用途</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>兒童隱私</h2>
+          <p>本 App 不是針對 13 歲以下兒童設計，也不會刻意蒐集兒童的個人資料。</p>
+        </section>
+
+        <section>
+          <h2>聯絡方式</h2>
+          <p>對這份政策有任何問題：<a href="mailto:oscar.tsai999@gmail.com">oscar.tsai999@gmail.com</a></p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <footer>Voice to Text · <a href="./support.html">Support</a></footer>
 </div>
-
-<div class="lang-block" lang="zh-Hant">
-<h1>Voice to Text（語音轉文字）— 隱私權政策</h1>
-<p class="updated">最後更新：2026 年 8 月</p>
-
-<p>Voice to Text（以下稱「本 App」）是一個簡單的語音轉文字筆記工具。這個頁面
-說明使用本 App 時，你的資料會如何被處理。</p>
-
-<h2>本 App 儲存了什麼</h2>
-<p>你的錄音以及轉錄出來的文字，<strong>只會儲存在你的裝置上</strong>，使用標準
-的 App 本機儲存空間。本 App 沒有後端伺服器、也沒有使用者帳號——你錄的或打的任
-何內容都不會上傳到開發者營運的任何伺服器。在 App 裡刪除筆記，或是把 App 移除
-安裝，都會永久清除裝置上對應的資料。</p>
-
-<h2>語音辨識</h2>
-<p>轉錄功能是透過 Apple 內建的 Speech Recognition framework 處理。依照你的裝
-置跟 iOS 設定不同，這個處理過程可能完全在裝置端進行，也可能會把音訊傳送到
-Apple 的伺服器。這部分是 Apple 自己的隱私權處理方式，不是開發者能控制的，詳情
-請參考
-<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隱私權政策</a>。</p>
-
-<h2>廣告</h2>
-<p>本 App 會顯示由 Google AdMob 提供的廣告，設定為<strong>非個人化</strong>廣
-告——App 不會使用 Apple 的 App Tracking Transparency 機制、不會存取裝置的廣告
-識別碼（IDFA），也不會為了投放廣告而建立你的個人化輪廓。Google AdMob 為了投放
-情境廣告與防止詐欺，仍可能處理少量技術性資訊（例如由 IP 位址推算的概略地區、
-裝置類型、一般性的 App 使用訊號），詳情請參考
-<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 廣告隱私權與條款</a>。</p>
-
-<h2>開發者不會做的事</h2>
-<ul>
-  <li>不需要註冊帳號或登入</li>
-  <li>除了上面提到的廣告相關項目之外，不使用任何分析或錯誤回報 SDK</li>
-  <li>不會出售或分享你的資料給第三方，僅有上述 Google AdMob 投放非個人化廣告
-    所需的最低限度資訊除外</li>
-  <li>不會把你的錄音或逐字稿用於在 App 裡顯示給你之外的任何用途</li>
-</ul>
-
-<h2>兒童隱私</h2>
-<p>本 App 不是針對 13 歲以下兒童設計，也不會刻意蒐集兒童的個人資料。</p>
-
-<h2>聯絡方式</h2>
-<p>對這份政策有任何問題：<a href="mailto:oscar.tsai999@gmail.com">oscar.tsai999@gmail.com</a></p>
-</div>
-
-<footer>Voice to Text · <a href="./support.html">Support</a></footer>
 </body>
 </html>
